@@ -8,6 +8,7 @@ import {
 import { FirebaseAuth } from "./config";
 
 const googleAuthProvider = new GoogleAuthProvider();
+googleAuthProvider.setCustomParameters({ prompt: "select_account" });
 
 export const singInWithGoogle = async () => {
   try {
@@ -67,4 +68,8 @@ export const loginWithEmailPassword = async (email, password) => {
       errorCode: error.code,
     };
   }
+};
+
+export const logoutFirebase = async () => {
+  return await FirebaseAuth.signOut();
 };
